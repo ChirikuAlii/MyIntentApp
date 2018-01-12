@@ -1,6 +1,7 @@
 package com.example.chiriku711.myintentapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements  View.OnClickListener{
 
-    Button btnPindahAcitivty , btnPindahActivityData , btnPindahWithPojo;
+    Button btnPindahAcitivty , btnPindahActivityData , btnPindahWithPojo ,btnDialPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,12 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         btnPindahWithPojo = findViewById(R.id.btn_pindah_activity_pojo);
         btnPindahWithPojo.setOnClickListener(this);
 
+        btnDialPhone = findViewById(R.id.btn_pindah_dial);
+        btnDialPhone.setOnClickListener(this);
+
+
     }
+
 
     @Override
     public void onClick(View v) {
@@ -55,6 +61,12 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                 moveWithPojo.putExtra(MoveWithObjectActivity.EXTTRA_PERSON , person);
                 startActivity(moveWithPojo);
                 break;
+
+            case R.id.btn_pindah_dial:
+                String phoneNumber = "082191913449";
+                Intent dial = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phoneNumber));
+                startActivity(dial);
+
 
 
         }
