@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
             case R.id.btn_pindah_dial:
                 String phoneNumber = "082191913449";
                 Intent dial = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phoneNumber));
-                startActivity(dial);
+                startActivity(dial);;
 
 
 
