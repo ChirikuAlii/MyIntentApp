@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements  View.OnClickListener{
 
-    Button btnPindahAcitivty , btnPindahActivityData , btnPindahWithPojo ,btnDialPhone;
+    Button btnPindahAcitivty , btnPindahActivityData , btnPindahWithPojo ,btnDialPhone , btnPindahWithResult;
+    private TextView tvResult;
+    private int REQUEST_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,12 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
         btnDialPhone = findViewById(R.id.btn_pindah_dial);
         btnDialPhone.setOnClickListener(this);
+
+        btnPindahWithResult = findViewById(R.id.btn_pindah_activity_for_result);
+        btnPindahWithResult.setOnClickListener(this);
+
+
+        tvResult = findViewById(R.id.txt_hasil);
 
 
     }
@@ -65,10 +74,29 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
             case R.id.btn_pindah_dial:
                 String phoneNumber = "082191913449";
                 Intent dial = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phoneNumber));
-                startActivity(dial);;
+                startActivity(dial);
+                break;
+
+            case R.id.btn_pindah_activity_for_result:
+                Intent resultIntent = new Intent (MainActivity.this ,MoveActivityWithResult.class);
+               startActivityForResult(resultIntent,REQUEST_CODE);
+               break;
 
 
 
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE){
+            if (resultCode == MoveActivityWithResult.RESULT_CODE ){
+                int selectedValue = data.getIntExtra(MoveActivityWithResult.EXTRA_SELECTED_VALUE,0);
+                tvResult.setText("Hasil:" + selectedValue);
+            }
+        }
+    }
 }
+

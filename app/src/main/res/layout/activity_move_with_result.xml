@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
     tools:context="com.example.chiriku711.myintentapp.MoveActivityWithResult">
 
-</android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:text="Pilih angka!"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:id="@+id/rg_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_50"
+            android:text="50"
+            android:layout_marginBottom="@dimen/margin_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/rb_100"
+            android:text="100"
+            android:layout_marginBottom="@dimen/margin_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/rb_150"
+            android:text="150"
+            android:layout_marginBottom="@dimen/margin_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/rb_200"
+            android:text="200"
+            android:layout_marginBottom="@dimen/margin_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_move_result"
+        android:text="Pilih"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
